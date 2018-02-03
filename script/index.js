@@ -34,10 +34,8 @@ function jsonpCallBack(res){
 		dayTemp.push(getTemp(str.slice(0,index)))
 		nightTemp.push(getTemp(str.slice(index+1)))
 	}
-	console.log(dayTemp)
-	console.log(nightTemp)
-	console.log(future.length)
 	buildLine(week,dayTemp,nightTemp)
+	changeIcon()
 }
 function getTemp(str){
 	let index = str.indexOf('℃')
@@ -220,4 +218,30 @@ function buildLine(week,dayTemp,nightTemp){
 		   	'transform': 'translate(390,15)'
 		   });
 }
-	
+function changeIcon(){
+	console.log(12321)
+	let types = document.getElementsByClassName('weather')
+	let icons = document.getElementsByClassName('right')
+	for(let i =0;i<types.length;i++){
+		let content = types[i].innerHTML;
+		console.log(content.indexOf())
+		if(content.indexOf('雨')!= -1){
+			icons[i].childNodes[0].className = 'fa fa-tint fa-4x'
+		}
+		else if(content.indexOf('雪')!= -1){
+			icons[i].childNodes[0].className = 'fa fa-snowflake-o fa-4x'
+		}
+		else if(content.indexOf('雷')!= -1){
+			icons[i].childNodes[0].className = 'fa fa-bolt fa-4x'
+		}
+		else if(content.indexOf('阴')!= -1){
+			icons[i].childNodes[0].className = 'fa fa-cloud fa-4x'
+		}
+		else if(content.indexOf('云')!= -1){
+			icons[i].childNodes[0].className = 'fa fa-cloud fa-4x'
+		}
+		else if(content.indexOf('晴')!= -1){
+			icons[i].childNodes[0].className = 'fa fa-sun-o fa-4x'
+		}
+	}
+}
